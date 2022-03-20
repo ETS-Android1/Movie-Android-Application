@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieItemClickListener{
 
     private List<Slide> listslide;
     private ViewPager sliderpaper;
@@ -57,10 +59,18 @@ public class MainActivity extends AppCompatActivity {
         lstMovie.add(new Movie("Parasyte", R.drawable.parasyte));
         lstMovie.add(new Movie("Stein Gate", R.drawable.stein_gate));
 
-        MovieAdapter movieAdapter = new MovieAdapter(this, lstMovie);
+        MovieAdapter movieAdapter = new MovieAdapter(this, lstMovie, this);
         movieRV.setAdapter(movieAdapter);
         movieRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
+    }
+
+    @Override
+    public void onMovieClick(Movie movie, ImageView movieImageView) {
+        //Here we send movie information to detail activity
+        //also we ll create the transition animation between the two activity
+
+        Toast.makeText(this, "item clicked" + movie.getTitle(), Toast.LENGTH_LONG).show();
     }
 
     class SliderTimer extends TimerTask{
