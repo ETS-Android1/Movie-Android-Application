@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -69,6 +71,15 @@ public class MainActivity extends AppCompatActivity implements MovieItemClickLis
     public void onMovieClick(Movie movie, ImageView movieImageView) {
         //Here we send movie information to detail activity
         //also we ll create the transition animation between the two activity
+
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra("title", movie.getTitle());
+        intent.putExtra("imgURL", movie.getThumbnail());
+
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, movieImageView, "sharedName");
+
+        startActivity(intent, options.toBundle());
 
         Toast.makeText(this, "item clicked" + movie.getTitle(), Toast.LENGTH_LONG).show();
     }
