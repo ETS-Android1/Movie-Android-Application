@@ -1,4 +1,4 @@
-package com.example.movieandroidapplication;
+package com.example.movieandroidapplication.models;
 
 import android.icu.text.CaseMap;
 
