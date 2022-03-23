@@ -1,4 +1,4 @@
-package com.example.movieandroidapplication;
+package com.example.movieandroidapplication.models;
 
 public class Movie {
     private String title;
@@ -7,6 +7,13 @@ public class Movie {
     private String studio;
     private String rating;
     private String streamingLink;
+    private int coverPhoto;
+
+    public Movie(String title, int thumbnail, int coverPhoto) {
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.coverPhoto = coverPhoto;
+    }
 
     public Movie(String title, String description, int thumbnail, String studio, String rating, String streamingLink) {
         this.title = title;
@@ -20,6 +27,15 @@ public class Movie {
     public Movie(String title, int thumbnail) {
         this.title = title;
         this.thumbnail = thumbnail;
+    }
+
+
+    public int getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(int coverPhoto) {
+        this.coverPhoto = coverPhoto;
     }
 
     public String getTitle() {
